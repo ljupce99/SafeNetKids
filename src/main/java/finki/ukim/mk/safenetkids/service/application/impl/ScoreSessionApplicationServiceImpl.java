@@ -41,8 +41,8 @@ public class ScoreSessionApplicationServiceImpl implements ScoreSessionApplicati
     }
 
     @Override
-    public ScoreSessionDisplayDto addPoints(ScoreSessionPointsDto pointsDto) {
-        ScoreSession scoreSession = this.scoreSessionDomainService.addPoints(pointsDto.sessionId(), pointsDto.pointsToAdd());
+    public ScoreSessionDisplayDto addPoints(String sessionId, ScoreSessionPointsDto pointsDto) {
+        ScoreSession scoreSession = this.scoreSessionDomainService.addPoints(sessionId, pointsDto.pointsToAdd());
         return mapToDisplayDto(scoreSession);
     }
 
@@ -56,4 +56,3 @@ public class ScoreSessionApplicationServiceImpl implements ScoreSessionApplicati
         );
     }
 }
-
