@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>User Registration</title>
+</head>
+<body>
+<h2>Registration Panel</h2>
+
+<div th:if="${message}" th:text="${message}"></div>
+<div th:if="${error}" th:text="${error}"></div>
+
+<form th:action="@{/management/users}" method="post">
+    <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
+
+    <label>Username:
+        <input type="text" name="username" required>
+    </label>
+    <br>
+    <label>Password:
+        <input type="password" name="password" required>
+    </label>
+    <br>
+    <label>Role:
+        <select name="role" required>
+            <option th:each="role : ${availableRoles}"
+                    th:value="${role.name()}"
+                    th:text="${role.name()}"></option>
+        </select>
+    </label>
+    <br>
+    <label>Town:
+        <input type="text" name="town" required>
+    </label>
+    <br>
+    <label>School:
+        <input type="text" name="school" required>
+    </label>
+    <br>
+    <button type="submit">Create User</button>
+</form>
+
+<p><a th:href="@{/dashboard}">Back to dashboard</a></p>
+</body>
+</html>
+

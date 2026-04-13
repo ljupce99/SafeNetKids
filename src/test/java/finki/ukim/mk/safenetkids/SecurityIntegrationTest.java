@@ -51,7 +51,7 @@ class SecurityIntegrationTest {
     }
 
     private String basicAuth() {
-        String token = "user:user123";
+        String token = "admin:admin123";
         return "Basic " + Base64.getEncoder().encodeToString(token.getBytes(StandardCharsets.UTF_8));
     }
 }
